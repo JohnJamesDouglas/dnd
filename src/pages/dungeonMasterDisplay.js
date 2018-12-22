@@ -9,7 +9,8 @@ export default class DungeonMasterDisplay extends Component  {
 	render() {
 		return (
 			<Row>
-				<Col s={12} m={10} l={8} offsetM={1} offsetL={2} gutters>
+				<Col s={12} m={12} l={12} gutters>
+					<Title type={3} align='center'>DUNGEON MASTER</Title>
 					<DungeonMaster />
 				</Col>
 			</Row>

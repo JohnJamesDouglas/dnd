@@ -26,7 +26,7 @@ import { Panel, PanelHeader, PanelBody } from 'jdui'
 import { Modal } from 'jdui'
 import { Snowflakes } from 'jdui'
 
-import { Roller } from 'jdui'
+import { Login } from 'jdui'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -50,7 +50,7 @@ export default class Index extends Component {
 		this.state = { shelfOpen: false, loginModalOpen: false, month: new Date().getMonth() }
 	}
 	shelfToggle = () => {
-		this.setState((state) => ({ shelfOpen: !state.shelfOpen }))
+		this.setState((state) => ({ shelfOpen: !state.shelfOpen, loginModalOpen: false }))
 	}
 	loginModalToggle = () => {
 		this.setState((state) => ({ loginModalOpen: !state.loginModalOpen }))
@@ -86,14 +86,13 @@ export default class Index extends Component {
 							<NavbarItem condensed={false}><Link to='/dm'>DUNGEON MASTER</Link></NavbarItem>
 						</NavbarShelf>
 						<Modal open={loginModalOpen} fade opacity={0.3} callback={() => loginModalToggle()}> 
-							<Paragraph align='center'>TEST</Paragraph>
-							<Roller numDice={6} historyLimit={1000} reroll delay={2000}/>
+							<Login />
 						</Modal>
 						{ shelfOpen ? <Fader click={backdropClickHandler} opacity={0.3}/> : <div/> }
 						{ month === 11 ? <Snowflakes /> : <div/> }
 						<Switch>
 							{/* <Route exact path='/' component={Home} /> */}
-							<Route exact path='/' component={DungeonMasterDisplay} />
+							<Route exact path='/' component={CharacterSheet} />
 							<Route path='/sheet' component={CharacterSheet} />
 							<Route path='/roll' component={Roll} />
 							<Route path='/initiative' component={InitiativeDisplay} />
